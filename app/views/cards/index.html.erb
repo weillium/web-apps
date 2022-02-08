@@ -10,13 +10,14 @@
         end
     end
 
+    hand = deck.shuffle[0,5]
+
 %>
 
 <h1>Deal the cards</h1>
 <p>
-    <% cards = deck.shuffle %>
-    <% for i in 1..5 do %>
-        <img src="/images/cards/<%= cards[i] %>.svg" />
+    <% for i in 0..4 do %>
+        <img src="/images/cards/<%= hand[i] %>.svg" />
     <% end %>
 </p>
 
