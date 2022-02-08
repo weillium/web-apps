@@ -1,0 +1,47 @@
+<% 
+
+    def cardgen
+
+        suit = rand(1..4)
+        number = rand(1..13)
+
+        if suit == 1 
+            return_suit = "hearts"
+        elsif suit == 2
+            return_suit = "spades"
+        elsif suit == 3
+            return_suit = "diamonds"
+        else
+            return_suit = "clubs"
+        end
+
+        if number == 1
+            return_number = "ace"
+        elsif number == 11
+            return_number = "jack"
+        elsif number == 12 
+            return_number = "queen"
+        elsif number == 13 
+            return_number = "king"
+        else
+            return_number = number.to_s
+        end
+
+        return [return_number, return_suit]
+
+    end
+
+    card1 = cardgen
+    card2 = cardgen
+
+%>
+
+<h1>Deal the cards</h1>
+<p>
+    <img src="/images/cards/<%= card1[0] %>_of_<%= card1[1] %>.svg" />
+    <img src="/images/cards/<%= card2[0] %>_of_<%= card2[1] %>.svg" />
+</p>
+
+<p>
+    <a href="/cards">Deal Again!</a>
+</p>
