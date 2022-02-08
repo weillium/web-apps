@@ -1,45 +1,23 @@
 <% 
 
-    def cardgen
+    suits = ["clubs", "diamonds", "hearts", "spades"]
+    numbers = [2, 3, 4, 5, 5, 6, 8, 9, 10, "jack", "queen", "king", "ace"]
 
-        suit = rand(1..4)
-        number = rand(1..13)
-
-        if suit == 1 
-            return_suit = "hearts"
-        elsif suit == 2
-            return_suit = "spades"
-        elsif suit == 3
-            return_suit = "diamonds"
-        else
-            return_suit = "clubs"
+    deck = []
+    for number in numbers 
+        for suit in suits 
+            deck << "#{number}_of_#{suit}"
         end
-
-        if number == 1
-            return_number = "ace"
-        elsif number == 11
-            return_number = "jack"
-        elsif number == 12 
-            return_number = "queen"
-        elsif number == 13 
-            return_number = "king"
-        else
-            return_number = number.to_s
-        end
-
-        return [return_number, return_suit]
-
     end
-
-    card1 = cardgen
-    card2 = cardgen
 
 %>
 
 <h1>Deal the cards</h1>
 <p>
-    <img src="/images/cards/<%= card1[0] %>_of_<%= card1[1] %>.svg" />
-    <img src="/images/cards/<%= card2[0] %>_of_<%= card2[1] %>.svg" />
+    <% cards = deck.shuffle %>
+    <% for i in 1..5 do %>
+        <img src="/images/cards/<%= cards[i] %>.svg" />
+    <% end %>
 </p>
 
 <p>
